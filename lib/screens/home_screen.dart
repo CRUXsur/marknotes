@@ -28,14 +28,17 @@ class HomeScreen extends StatelessWidget {
           children: const <Widget>[
             Text('Número de Clicks', style: fontSize30),
             Text('10', style: fontSize30),
-
-            // Text(
-            //   'Número de Clicks',
-            //   style: TextStyle(fontSize: 30),
-            // ),
-            // Text('10', style: TextStyle(fontSize: 30)),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        //ponemos un icon
+        //Icon: es un widget especializado para mostrar iconos
+        child: const Icon(Icons.add),
+        onPressed: () {
+          //
+          //print('Hola mundo');
+        },
       ),
     );
   }
