@@ -7,12 +7,25 @@ class HomeScreen extends StatelessWidget {
   //buildContext:arbol de widgets!!!
   Widget build(BuildContext context) {
     //el build regresa un Widget
-    return const Scaffold(
-      //es como un lienzo donde puedo put my widgets
-      //backgroundColor: Colors.amber,
+    return Scaffold(
+      //esta esperando un widget que tiene un cierto tanano definido
+      appBar: AppBar(
+        //
+        title: const Text('HomeScreen'),
+        elevation: 10.0,
+      ),
       body: Center(
-        //otro widget con hijo child: Text
-        child: Text('HomeScreen'), //3er Widget Text
+        child: Column(
+          //propiedades de la columna
+          //si es columa el alineamiento principal es hacia abajo(vertical)
+          mainAxisAlignment: MainAxisAlignment.center,
+          //hoorizontal aligmente
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          children: const <Widget>[
+            Text('Clicks counter'), //3er Widget Text
+            Text('0'),
+          ],
+        ),
       ),
     );
   }
