@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
+//cuando toco el boton 'add' + ; necesito cambiar el estado de este Homescreen
+//del  StatelessWidget..........
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key); //key:sidentifica este widget
+  /// AQUI VAN LAS PROPIEDADES********************************
 
   @override
   //buildContext:arbol de widgets!!!
   Widget build(BuildContext context) {
+    /// AQUI VAN LAS VARIABLES*******************************
     //variable del tamano de letra
     //TextStyle fontSize30 = const TextStyle(fontSize: 30);
     //or
     const fontSize30 = TextStyle(fontSize: 30);
-
+    int counter = 0; //variable
     return Scaffold(
       //esta esperando un widget que tiene un cierto tanano definido
       appBar: AppBar(
@@ -25,9 +29,9 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           //hoorizontal aligmente
           //crossAxisAlignment: CrossAxisAlignment.center,
-          children: const <Widget>[
-            Text('Número de Clicks', style: fontSize30),
-            Text('10', style: fontSize30),
+          children: <Widget>[
+            const Text('Número de Clicks', style: fontSize30),
+            Text('$counter', style: fontSize30),
           ],
         ),
       ),
@@ -38,7 +42,8 @@ class HomeScreen extends StatelessWidget {
         child: const Icon(Icons.add, size: 40),
         onPressed: () {
           //
-          //print('Hola mundo');
+          counter++;
+          print('Hola mundo:  $counter');
         },
       ),
     );
