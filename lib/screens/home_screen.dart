@@ -6,7 +6,11 @@ class HomeScreen extends StatelessWidget {
   @override
   //buildContext:arbol de widgets!!!
   Widget build(BuildContext context) {
-    //el build regresa un Widget
+    //variable del tamano de letra
+    //TextStyle fontSize30 = const TextStyle(fontSize: 30);
+    //or
+    const fontSize30 = TextStyle(fontSize: 30);
+
     return Scaffold(
       //esta esperando un widget que tiene un cierto tanano definido
       appBar: AppBar(
@@ -22,8 +26,14 @@ class HomeScreen extends StatelessWidget {
           //hoorizontal aligmente
           //crossAxisAlignment: CrossAxisAlignment.center,
           children: const <Widget>[
-            Text('Clicks counter'), //3er Widget Text
-            Text('0'),
+            Text('Número de Clicks', style: fontSize30),
+            Text('10', style: fontSize30),
+
+            // Text(
+            //   'Número de Clicks',
+            //   style: TextStyle(fontSize: 30),
+            // ),
+            // Text('10', style: TextStyle(fontSize: 30)),
           ],
         ),
       ),
