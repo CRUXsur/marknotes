@@ -31,10 +31,11 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         //ponemos un icon
         //Icon: es un widget especializado para mostrar iconos
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, size: 40),
         onPressed: () {
           //
           //print('Hola mundo');
