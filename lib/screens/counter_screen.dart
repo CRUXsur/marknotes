@@ -30,14 +30,40 @@ class _CounterScreenState extends State<CounterScreen> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add, size: 40),
-        onPressed: () {
-          counter++;
-          setState(() {});
-          //print('Hola mundo:  $counter');
-        },
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Row(
+        //mainAxisAlignment: MainAxisAlignment.center,
+        //podemos crear espacios entre los botones
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+        children: [
+          FloatingActionButton(
+            child: const Icon(Icons.exposure_plus_1_outlined, size: 40),
+            onPressed: () {
+              counter++;
+              setState(() {}); //REDIBUJA el estado, la pantalla
+              //print('Hola mundo:  $counter');
+            },
+          ),
+          //const SizedBox(width: 20),
+          FloatingActionButton(
+            child: const Icon(Icons.restart_alt_outlined, size: 40),
+            onPressed: () {
+              counter = 0;
+              setState(() {}); //REDIBUJA el estado, la pantalla
+              //print('Hola mundo:  $counter');
+            },
+          ),
+          //const SizedBox(width: 20),
+          FloatingActionButton(
+            child: const Icon(Icons.exposure_minus_1_outlined, size: 40),
+            onPressed: () {
+              counter--;
+              setState(() {}); //REDIBUJA el estado, la pantalla
+              //print('Hola mundo:  $counter');
+            },
+          ),
+        ],
       ),
     );
   }
