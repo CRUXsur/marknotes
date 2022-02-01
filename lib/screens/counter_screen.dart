@@ -9,7 +9,22 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> {
   /// AQUI VAN LAS PROPIEDADES********************************
-  int counter = 0; //propiedad
+  int counter = 15; //propiedad
+  //Creamos un metodo dentro del State................................
+  void increase() {
+    counter++;
+    setState(() {});
+  }
+
+  void decrease() {
+    counter--;
+    setState(() {});
+  }
+
+  void reset() {
+    counter = 0;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +46,27 @@ class _CounterScreenState extends State<CounterScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: const CustomFloatingActions(),
+      floatingActionButton: CustomFloatingActions(
+          //tengo que mandar mi funcion(la referencia , no la estoy ejecutando)
+          increaseFn: increase, //la referncia es sin (), para ejecutar con ()
+          decreaseFn: decrease, //la referncia es sin (), para ejecutar con ()
+          resetFn: reset),
     );
   }
 }
 
 //me crea el Widget totalmente independiente
 class CustomFloatingActions extends StatelessWidget {
+  //propiedad
+  final Function increaseFn;
+  final Function decreaseFn;
+  final Function resetFn;
+
   const CustomFloatingActions({
     Key? key,
+    required this.increaseFn,
+    required this.decreaseFn,
+    required this.resetFn,
   }) : super(key: key);
 
   @override
@@ -49,23 +76,25 @@ class CustomFloatingActions extends StatelessWidget {
       //podemos crear espacios entre los botones
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-      children: const [
+      children: [
         FloatingActionButton(
-          child: Icon(Icons.exposure_plus_1_outlined, size: 40),
+          child: const Icon(Icons.exposure_plus_1_outlined, size: 40),
           //onPressed: () => setState(() => counter++),
-          onPressed: null,
+          onPressed: () => increaseFn(), //() lo estoy ejecutamdo!!!!!!!!
         ),
         //const SizedBox(width: 20),
         FloatingActionButton(
-          child: Icon(Icons.restart_alt_outlined, size: 40),
+          child: const Icon(Icons.restart_alt_outlined, size: 40),
           //onPressed: () => setState(() => counter = 0),
-          onPressed: null,
+          onPressed: () {
+            resetFn();
+          },
         ),
         //const SizedBox(width: 20),
         FloatingActionButton(
-          child: Icon(Icons.exposure_minus_1_outlined, size: 40),
+          child: const Icon(Icons.exposure_minus_1_outlined, size: 40),
           //onPressed: () => setState(() => counter--),
-          onPressed: null,
+          onPressed: () => decreaseFn(),
         ),
       ],
     );
