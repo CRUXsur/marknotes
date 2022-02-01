@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
         onPressed: () {
           //
           counter++;
-          print('Hola mundo:  $counter');
+          //print('Hola mundo:  $counter');
         },
       ),
     );

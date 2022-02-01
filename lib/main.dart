@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:marknotes/screens/home_screen.dart';
+//import 'package:marknotes/screens/home_screen.dart';
+import 'package:marknotes/screens/counter_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         //widgets que podemos usar..
         //documentacion en:
         //https://api.flutter.dev/flutter/material/MaterialApp-class.html
-        home: HomeScreen());
+        //home: HomeScreen());
+        home: CounterScreen());
   }
   //
 }
