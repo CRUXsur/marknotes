@@ -4,6 +4,11 @@ import 'package:marknotes/models/models.dart';
 import 'package:marknotes/screens/screens.dart';
 
 class AppRoutes {
+/**
+ *     static : porque NO QUIERO CREAR UNA INSTANCIA DE AppRoutes
+ *              quiero acceder directamente como AppRoutes.xxxxxx
+ */
+
   static const initialRoute = 'home';
 
   static final menuOptions = <MenuOption>[
@@ -35,13 +40,31 @@ class AppRoutes {
         icon: Icons.credit_card)
   ];
 
-  static Map<String, Widget Function(BuildContext)> routes = {
+/**
+*     creo un metodo getAppRoutes; que regresa un mapa; que tiene 
+*     como llave un String, y lo que va apuntar es a una funcion 
+*     que recibe el BuildContext y regresa un Widget
+*
+ */
+  static Map<String, Widget Function(BuildContext)> getAppRoutes() {
+    //tenemos que regresar algo,.....
+    //defino un mapa appRoutes
+    Map<String, Widget Function(BuildContext)> appRoutes = {}; //definido
+
+    for (final option in menuOptions) {
+      appRoutes.addAll({option.route: (BuildContext context) => option.screen});
+    }
+
+    return appRoutes;
+  }
+
+/*   static Map<String, Widget Function(BuildContext)> routes = {
     'home': (BuildContext context) => const HomeScreen(),
     'listview1': (BuildContext context) => const Listview1Screen(),
     'listview2': (BuildContext context) => const Listview2Screen(),
     'alert': (BuildContext context) => const AlertScreen(),
     'card': (BuildContext context) => const CardScreen()
-  };
+  }; */
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     return MaterialPageRoute(
       builder: (context) => const AlertScreen(),
