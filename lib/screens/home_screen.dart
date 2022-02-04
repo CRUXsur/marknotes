@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:marknotes/router/app_routes.dart';
+import 'package:marknotes/theme/app_theme.dart';
 
 //import 'package:marknotes/screens/screens.dart';
 
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
                   //leading: const Icon(Icons.access_time_outlined),
                   leading: Icon(
                     menuOptions[i].icon,
-                    color: Colors.indigo,
+                    color: AppTheme.primary,
                   ),
                   title: Text(menuOptions[i].name),
                   onTap: () {
