@@ -17,8 +17,24 @@ class CardScreen extends StatelessWidget {
             //Crtl. extract Widget
             CustomCardType1(),
             SizedBox(height: 10),
-            CustomCardType2(),
-
+            CustomCardType2(
+              name: 'Un Hermoso Paisaje',
+              imageUrl:
+                  'https://photographylife.com/wp-content/uploads/2017/01/What-is-landscape-photography.jpg',
+            ),
+            SizedBox(height: 20),
+            CustomCardType2(
+              name: null,
+              imageUrl:
+                  'https://photographylife.com/wp-content/uploads/2017/01/What-is-landscape-photography.jpg',
+            ),
+            SizedBox(height: 20),
+            CustomCardType2(
+              name: 'hola',
+              imageUrl:
+                  'https://photographylife.com/wp-content/uploads/2017/01/What-is-landscape-photography.jpg',
+            ),
+            SizedBox(height: 10),
             //
             //
           ],
