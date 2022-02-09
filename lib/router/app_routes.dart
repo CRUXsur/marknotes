@@ -18,11 +18,11 @@ class AppRoutes {
         name: 'Home Screen',
         screen: const HomeScreen(),
         icon: Icons.home_max_sharp),
-    MenuOption(
+/*     MenuOption(
         route: 'listview1',
         name: 'ListView Tipo 1',
         screen: const Listview1Screen(),
-        icon: Icons.list_alt),
+        icon: Icons.list_alt), */
     MenuOption(
         route: 'listview2',
         name: 'ListView Tipo 2',
@@ -60,6 +60,7 @@ class AppRoutes {
     //tenemos que regresar algo,.....
     //defino un mapa appRoutes
     Map<String, Widget Function(BuildContext)> appRoutes = {}; //definido
+    appRoutes.addAll({'home': (BuildContext context) => const HomeScreen()});
 
     for (final option in menuOptions) {
       appRoutes.addAll({option.route: (BuildContext context) => option.screen});
