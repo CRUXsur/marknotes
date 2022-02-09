@@ -12,7 +12,6 @@ class AppRoutes {
   static const initialRoute = 'home';
 
   static final menuOptions = <MenuOption>[
-    // TODO: borrar home
     MenuOption(
         route: 'home',
         name: 'Home Screen',
@@ -47,7 +46,12 @@ class AppRoutes {
         route: 'animated',
         name: 'Animated Container',
         screen: const AnimatedScreen(),
-        icon: Icons.play_circle_outline_rounded)
+        icon: Icons.play_circle_outline_rounded),
+    MenuOption(
+        route: 'inputs',
+        name: 'Text Inputs',
+        screen: const InputsScreen(),
+        icon: Icons.input_rounded)
   ];
 
 /**
