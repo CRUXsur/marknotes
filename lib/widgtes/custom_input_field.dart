@@ -6,6 +6,8 @@ class CustomInputField extends StatelessWidget {
   final String? helperText;
   final IconData? icon;
   final IconData? suffixIcon;
+  final TextInputType? keyboardType;
+  final bool obscureText; //isPassword;
 
   const CustomInputField({
     Key? key,
@@ -14,6 +16,8 @@ class CustomInputField extends StatelessWidget {
     this.helperText,
     this.icon,
     this.suffixIcon,
+    this.keyboardType,
+    this.obscureText = false,
   }) : super(key: key);
 
   @override
@@ -22,6 +26,10 @@ class CustomInputField extends StatelessWidget {
         autofocus: false, //
         initialValue: '', //
         textCapitalization: TextCapitalization.words,
+        //keyboardType: TextInputType.emailAddress,
+        keyboardType: keyboardType,
+        //obscureText: true,
+        obscureText: obscureText,
         onChanged: (value) {
           //
           print('value: $value');
@@ -37,7 +45,7 @@ class CustomInputField extends StatelessWidget {
           labelText: labelText, //Nombre
           helperText: helperText, //solo letras
           //counterText:
-          prefixIcon: Icon(Icons.verified_user_outlined),
+          prefixIcon: const Icon(Icons.verified_user_outlined),
           //suffixIcon: Icon(Icons.group_outlined), //
           suffixIcon: suffixIcon == null ? null : Icon(suffixIcon), //
           //icon: Icon(Icons.assignment_ind_outlined),
