@@ -6,3 +6,4 @@ export 'package:marknotes/screens/home_screen.dart';
 export 'package:marknotes/screens/inputs_screen.dart';
 export 'package:marknotes/screens/listview1_screen.dart';
 export 'package:marknotes/screens/listview2_screen.dart';
+export 'package:marknotes/screens/slider_screen.dart';
