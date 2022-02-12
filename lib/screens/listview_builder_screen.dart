@@ -21,7 +21,7 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
     scrollController.addListener(() {
       // print(
       //     '${scrollController.position.pixels},${scrollController.position.maxScrollExtent}');
-      if ((scrollController.position.pixels) >=
+      if ((scrollController.position.pixels + 500) >=
           scrollController.position.maxScrollExtent) {
         //add5();
         fetchData();
@@ -47,6 +47,16 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
     final lastId = imagesIds.last;
     imagesIds.addAll([1, 2, 3, 4, 5].map((e) => lastId + e));
     setState(() {});
+
+    if ((scrollController.position.pixels + 100) <=
+        scrollController.position.maxScrollExtent) return;
+
+    scrollController.animateTo(
+        //
+        scrollController.position.pixels + 120,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.fastOutSlowIn //
+        );
   }
 
   @override
@@ -86,11 +96,12 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
               },
             ),
 
-            Positioned(
-              bottom: 40,
-              left: size.width * 0.5 - 30, //*-30,ancho del widget es 60
-              child: const _LoadingIcon(),
-            ), //
+            if (isLoading) //!solo nos permite uan instruccion-NO cuerpo inst
+              Positioned(
+                bottom: 40,
+                left: size.width * 0.5 - 30, //*-30,ancho del widget es 60
+                child: const _LoadingIcon(),
+              ) //
           ],
         ),
       ),
