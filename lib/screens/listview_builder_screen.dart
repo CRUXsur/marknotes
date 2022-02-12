@@ -59,6 +59,15 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
         );
   }
 
+  Future<void> onRefresh() async {
+    await Future.delayed(const Duration(seconds: 2));
+    final lastId = imagesIds.last;
+    //*purgo, borro todas mis imagenes!
+    imagesIds.clear();
+    imagesIds.add(lastId + 1);
+    add5();
+  }
+
   @override
   Widget build(BuildContext context) {
     //? PARA TENER INFORMACION DEL DISPOSITIVO....
@@ -76,24 +85,28 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
         //!wrap  with Column => wrap with Stack
         child: Stack(
           children: [
-            ListView.builder(
-              //** para ver el efecto de IOS al final del scroll
-              physics: const BouncingScrollPhysics(),
-              controller: scrollController,
-              itemCount: imagesIds.length,
-              itemBuilder: (BuildContext context, int index) {
-                return FadeInImage(
-                    //?para que al cargar la imagen no salte!
-                    width: double.infinity,
-                    height: 300,
-                    //?-----
-                    //? quiero todas imagenes pegadas
-                    fit: BoxFit.cover,
-                    //?-----
-                    placeholder: const AssetImage('assets/jar-loading.gif'),
-                    image: NetworkImage(
-                        'https://picsum.photos/500/300?image=${imagesIds[index]}'));
-              },
+            RefreshIndicator(
+              color: AppTheme.primary,
+              onRefresh: onRefresh,
+              child: ListView.builder(
+                //** para ver el efecto de IOS al final del scroll
+                physics: const BouncingScrollPhysics(),
+                controller: scrollController,
+                itemCount: imagesIds.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return FadeInImage(
+                      //?para que al cargar la imagen no salte!
+                      width: double.infinity,
+                      height: 300,
+                      //?-----
+                      //? quiero todas imagenes pegadas
+                      fit: BoxFit.cover,
+                      //?-----
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      image: NetworkImage(
+                          'https://picsum.photos/500/300?image=${imagesIds[index]}'));
+                },
+              ),
             ),
 
             if (isLoading) //!solo nos permite uan instruccion-NO cuerpo inst
